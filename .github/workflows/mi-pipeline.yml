@@ -12,4 +12,4 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Verificar archivo
-        run: ls -l
+        run: grep "production" config/kubernetes.conf
