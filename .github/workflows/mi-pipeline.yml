@@ -13,3 +13,6 @@ jobs:
       
       - name: Verificar archivo
         run: grep "production" config/kubernetes.conf
+        
+      - name: Desplegar a Producción
+        run: echo "Simulando despliegue a producción..."
