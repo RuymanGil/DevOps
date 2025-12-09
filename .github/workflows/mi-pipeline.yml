@@ -7,8 +7,8 @@ jobs:
   mi-primer-trabajo:
     runs-on: ubuntu-latest
 
-steps:
-      - name: Descargar código
+    steps:
+      - name: Descargar codigo
         uses: actions/checkout@v4
       
       - name: Verificar archivo
