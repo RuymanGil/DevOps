@@ -26,8 +26,7 @@ jobs:
             echo "👤 Soy el usuario: $(whoami)"
             echo "📂 Estoy en el directorio: $(pwd)"
             echo "🚀 Listo para ejecutar comandos en el servidor."
-      
-       - name: Copiar archivos al servidor (Deploy)
+      - name: Copiar archivos al servidor (Deploy)
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
@@ -47,3 +46,4 @@ jobs:
           script: |
             echo "✅ Despliegue completado."
             ls -la /home/ruymang1/public_html/index.html
+            echo "🚀 Listo para ejecutar comandos en el servidor."
