@@ -14,5 +14,36 @@ jobs:
       - name: Verificar archivo
         run: grep "production" config/kubernetes.conf
         
-      - name: Desplegar a Producción
-        run: echo "Simulando despliegue a producción..."
+      - name: Desplegar a Producción vía SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.LLAVE_PRIVADA_SSH }}
+          port: ${{ secrets.PORT }}
+          script: |
+            echo "🔌 Conexión establecida con éxito."
+            echo "👤 Soy el usuario: $(whoami)"
+            echo "📂 Estoy en el directorio: $(pwd)"
+            echo "🚀 Listo para ejecutar comandos en el servidor."
+      
+       - name: Copiar archivos al servidor (Deploy)
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.LLAVE_PRIVADA_SSH }}
+          port: ${{ secrets.PORT }}
+          source: "projects/cv_it/index.html"     # 1. Le decimos dónde está realmente
+          target: "/home/ruymang1/public_html/test10/cv_it"
+          strip_components: 2                       # 2. EL TRUCO: Le decimos "ignora las 2 primeras carpetas (projects/cv_it) y copia solo el archivo"
+      - name: Desplegar a Producción vía SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.LLAVE_PRIVADA_SSH }}
+          port: ${{ secrets.PORT }}
+          script: |
+            echo "✅ Despliegue completado."
+            ls -la /home/ruymang1/public_html/index.html

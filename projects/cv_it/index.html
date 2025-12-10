@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV de [Tu Nombre] - DevOps Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS */
+        :root {
+            --color-primary: #0A192F; /* Azul oscuro medianoche para texto principal */
+            --color-secondary: #64FFDA; /* Verde menta como acento elegante */
+            --color-text-light: #8892B0; /* Gris para texto secundario */
+            --color-background: #FFFFFF; /* Blanco puro */
+            --font-body: 'Lato', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+        }
+
+        /* Reset Básico y Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--color-primary);
+            background-color: var(--color-background);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .cv-container {
+            display: flex;
+            flex-direction: column; /* Por defecto, en columna para móvil */
+            width: 100%;
+            max-width: 1200px; /* Ancho máximo para el CV */
+            background-color: var(--color-background);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden; /* Para manejar los bordes redondeados */
+        }
+
+        /* Sección de Encabezado */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--color-primary); /* Fondo oscuro para el nombre */
+            color: var(--color-secondary); /* Acento para el nombre */
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: var(--color-text-light);
+            font-weight: 300;
+        }
+
+        /* Contenido Principal (Columnas) */
+        .main-content {
+            display: flex;
+            flex-direction: column; /* Columna para móvil */
+            padding: 30px;
+        }
+
+        .main-column {
+            flex: 3; /* Ocupa más espacio */
+            padding-right: 0px; /* Sin padding derecho en móvil */
+        }
+
+        .sidebar-column {
+            flex: 1; /* Ocupa menos espacio */
+            padding-left: 0px; /* Sin padding izquierdo en móvil */
+            background-color: #F8F8F8; /* Un ligero gris para la barra lateral */
+            padding: 20px;
+            border-radius: 0 0 8px 8px; /* Redondeado solo abajo en móvil */
+        }
+
+        /* Títulos de Sección */
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-secondary); /* Línea de acento */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Elementos de Sección */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px; /* Espacio para el bullet */
+        }
+
+        .section ul li:before {
+            content: '•'; /* Bullet personalizado */
+            color: var(--color-secondary);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1.2;
+        }
+
+        /* Experiencia y Educación */
+        .job-entry, .education-entry {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--color-text-light); /* Separador sutil */
+        }
+
+        .job-entry:last-child, .education-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .job-title, .degree {
+            font-family: var(--font-heading);
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 5px;
+        }
+
+        .company-name, .university-name {
+            font-weight: 400;
+            color: var(--color-secondary);
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+
+        .job-dates, .education-dates {
+            font-size: 0.9em;
+            color: var(--color-text-light);
+            margin-bottom: 10px;
+        }
+
+        .job-description li {
+            font-size: 0.95em;
+            color: var(--color-primary);
+        }
+
+        /* Contacto e Iconos */
+        .contact-info ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info ul li:before {
+            content: none; /* Elimina el bullet por defecto */
+        }
+
+        .contact-info a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--color-secondary);
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-secondary); /* Color del icono */
+        }
+
+        /* Habilidades */
+        .skills-category {
+            margin-bottom: 15px;
+        }
+
+        .skills-category h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skills-list span {
+            background-color: var(--color-text-light);
+            color: var(--color-background);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 400;
+        }
+        
+        /* Responsividad para desktop (más de 768px) */
+        @media (min-width: 768px) {
+            .cv-container {
+                flex-direction: row; /* Columnas en desktop */
+            }
+
+            .main-column {
+                padding-right: 40px;
+                border-right: 1px solid #EEEEEE; /* Separador entre columnas */
+            }
+
+            .sidebar-column {
+                padding-left: 40px;
+                border-radius: 0 8px 8px 0; /* Redondeado solo a la derecha */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <h1>Ruymangl</h1>
+            <p>DevOps & Cloud Engineer</p>
+        </header>
+
+        <div class="main-content">
+            <div class="main-column">
+                <section class="section">
+                    <h2 class="section-title">Resumen Profesional</h2>
+                    <p>Ingeniero DevOps con 5+ años de experiencia en automatización de infraestructuras, CI/CD, despliegue de microservicios y gestión de plataformas en la nube (AWS, Azure). Apasionado por optimizar procesos, implementar prácticas de Site Reliability Engineering (SRE) y construir soluciones escalables y resilientes. Busco un rol donde pueda aplicar mi experiencia para impulsar la eficiencia y la innovación.</p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Experiencia</h2>
+                    <div class="job-entry">
+                        <h3 class="job-title">DevOps Lead Engineer</h3>
+                        <p class="company-name">Tech Innovators Inc.</p>
+                        <p class="job-dates">Enero 2022 – Presente</p>
+                        <ul class="job-description">
+                            <li>Diseño e implementación de pipelines CI/CD robustos usando Jenkins y GitLab CI para automatizar despliegues multi-ambiente (desarrollo, staging, producción).</li>
+                            <li>Administración y optimización de infraestructuras en AWS (EC2, EKS, Lambda, RDS) y Terraform para IaC.</li>
+                            <li>Monitorización y alerta proactiva con Prometheus y Grafana, reduciendo el MTTR en un 20%.</li>
+                            <li>Liderazgo en la migración de aplicaciones monolíticas a una arquitectura de microservicios basada en Kubernetes.</li>
+                        </ul>
+                    </div>
+                    <div class="job-entry">
+                        <h3 class="job-title">Cloud Automation Engineer</h3>
+                        <p class="company-name">Global Solutions Corp.</p>
+                        <p class="job-dates">Marzo 2019 – Diciembre 2021</p>
+                        <ul class="job-description">
+                            <li>Automatización de tareas de aprovisionamiento de recursos en Azure con Azure DevOps y ARM Templates.</li>
+                            <li>Gestión de configuraciones con Ansible para asegurar la consistencia en múltiples servidores Linux.</li>
+                            <li>Implementación de sistemas de *logging* centralizado con ELK Stack.</li>
+                            <li>Colaboración con equipos de desarrollo para optimizar los procesos de construcción y pruebas de software.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Educación</h2>
+                    <div class="education-entry">
+                        <h3 class="degree">Máster en Ingeniería de Software y Sistemas</h3>
+                        <p class="university-name">Universidad Politécnica de Madrid</p>
+                        <p class="education-dates">Septiembre 2017 – Junio 2019</p>
+                    </div>
+                    <div class="education-entry">
+                        <h3 class="degree">Grado en Ingeniería Informática</h3>
+                        <p class="university-name">Universidad Complutense de Madrid</p>
+                        <p class="education-dates">Septiembre 2013 – Junio 2017</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="sidebar-column">
+                <section class="section contact-info">
+                    <h2 class="section-title">Contacto</h2>
+                    <ul>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:ruymangl@example.com">ruymangl@example.com</a>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            <a href="https://linkedin.com/in/ruymangl" target="_blank">linkedin.com/in/ruymangl</a>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-9-2.5-9-2.5v-6a2 2 0 0 0 2-2c0-2.7 1-4 3-4s4 1.5 5 2.5c1-1 2-1.5 3-1.5s2 0 3 1.5c1-1 2-1 3-1.5s2 0 3 1.5v6c0 0-4 4-9 2.5z"></path></svg>
+                            <a href="https://github.com/ruymangl" target="_blank">github.com/ruymangl</a>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>+34 6XX XXX XXX</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Habilidades</h2>
+                    <div class="skills-category">
+                        <h4>Lenguajes & Scripting</h4>
+                        <div class="skills-list">
+                            <span>Python</span><span>Bash</span><span>Go</span><span>JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h4>Cloud & Virtualización</h4>
+                        <div class="skills-list">
+                            <span>AWS (EC2, S3, RDS, EKS, Lambda)</span><span>Azure (VMs, AKS, App Services)</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>Ansible</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h4>CI/CD & DevOps</h4>
+                        <div class="skills-list">
+                            <span>Jenkins</span><span>GitLab CI</span><span>GitHub Actions</span><span>ArgoCD</span><span>Prometheus</span><span>Grafana</span><span>ELK Stack</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h4>Bases de Datos</h4>
+                        <div class="skills-list">
+                            <span>MySQL</span><span>PostgreSQL</span><span>MongoDB</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
