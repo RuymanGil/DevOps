@@ -14,5 +14,15 @@ jobs:
       - name: Verificar archivo
         run: grep "production" config/kubernetes.conf
         
-      - name: Desplegar a Producción
-        run: echo "Simulando despliegue a producción..."
+      - name: Desplegar a Producción vía SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.LLAVE_PRIVADA_SSH }}
+          port: ${{ secrets.PORT }}
+          script: |
+            echo "🔌 Conexión establecida con éxito."
+            echo "👤 Soy el usuario: $(whoami)"
+            echo "📂 Estoy en el directorio: $(pwd)"
+            echo "🚀 Listo para ejecutar comandos en el servidor."
